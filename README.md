@@ -153,6 +153,9 @@ or
 python get_facts.py
 ```
 
+
+
+
 # 2. Handling Junos Configurations with PyEZ
 Now exploring how to retrieve and modify the configuration of some Junos devices using PyEZ
 
@@ -182,12 +185,36 @@ dev1.close()
 ```
 
 ## 2.2 Retrieving Junos configuration data
-text
-
+Retrieve the full config in XML format
 ```
+from lxml import etree
+
 data = dev1.rpc.get_config()
 print(etree.tostring(data, encoding='unicode'))
 ```
+
+In Text format (classic curly braces style)
+```
+data = dev1.rpc.get_config(options={'format':'text'})
+print(etree.tostring(data))
+```
+
+In Text format (set commands)
+data = dev1.rpc.get_config(options={'format':'set'})
+print (etree.tostring(data))
+
+
+In JSON format
+```
+data = dev1.rpc.get_config(options={'format':'json'})
+pprint (data)
+```
+
+Retrieving only specific parts of the configuration. This is achieved with the 'filter_xml' argument with the correct XML XPath. Here we look at the XPath: 'system/services'
+```
+data = dev1.rpc.get_config(filter_xml='<system><services/></system>', options={'format':'text'})
+print(etree.tostring(data))
+
 ## 2. subtitle
 text
 

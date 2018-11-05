@@ -4,13 +4,17 @@
 
 ## Documentation Structure
 
-[**1. Quick PyEZ Demo using the Python Interpreter**](README.md#1.-Quick-PyEZ-Demo-using-the-python-interpreter)
+[**1. Quick PyEZ Demo using the Python Interpreter**](README.md#1.-Quick-PyEZ-Demo-using-the-Python-Interpreter)
 
-[**2. Simple Python script with PyEZ**](README.md#2.-Simple-Python-script-with-PyEZ)
+[**2. Handling Junos Configurations with PyEZ**](README.md#2.-Handling-Junos-Configurations-with-PyEZ)
 
 
 # 1. Quick PyEZ Demo using the Python Interpreter
-This is just a short demo to quickly show how Jinja2 templates work with Python
+This is just a short demo to quickly show how the Python PyEZ library can help us 
+
+More on PyEZ here:
+https://junos-pyez.readthedocs.io/en/stable/
+https://www.juniper.net/documentation/en_US/junos-pyez/information-products/pathway-pages/junos-pyez-developer-guide.html
 
 ---
 ## 1.1 Start a Docker container for the PyEZ environment
@@ -38,7 +42,7 @@ Check out the documentation for the Device class
 help(Device)
 ```
 
-## 1.4 Open NETCONF connections
+## 1.4 Open PyEZ/NETCONF connections
 Create an instance of Device with the following variables:
 - host = hostname or IP address (mandatory)
 - user = username  (mandatory)
@@ -98,23 +102,14 @@ import yaml
 print (yaml.dump(dev1.facts))
 ```
 
-## 1.5 Close the NETCONF connection
+## 1.6 Close the PyEZ/NETCONF connection
 Close the connection to the device.
 ```
 dev.close()
 ```
 
-
-
-# 2. Pull and Push Junos Configurations via NETCONF
-text
-
-```
-cli
-```
-
-## 2.1 Baseline script
-text
+## 1.7 Complete PyEZ Script
+Create a script called 'get_facts.py'
 
 ```
 from jnpr.junos import Device
@@ -144,11 +139,54 @@ dev1.close()
 dev2.close()
 ```
 
-## 2. subtitle
+Setting file permissions
+```
+chmod +x get_facts.py
+```
+
+Running the Python script
+```
+./get_facts.py
+```
+or
+```
+python get_facts.py
+```
+
+# 2. Handling Junos Configurations with PyEZ
+Now exploring how to retrieve and modify the configuration of some Junos devices using PyEZ
+
+## 2.1 Baseline script
+Let's start with a simple script to open a NETCONF session to a single Junos device
+
+```
+from jnpr.junos import Device
+from jnpr.junos.exception import ConnectError
+import pprint
+import sys
+
+dev1 = Device(host='mx1',user='lab', passwd='lab123')
+
+try:
+    dev1.open()
+except ConnectError as err:
+    print ("Cannot connect to device: {0}".format(err))
+    sys.exit(1)
+
+print(dev1.facts['hostname'])
+print(dev1.facts['model'])
+print(dev1.facts['version'])
+
+
+dev1.close()
+```
+
+## 2.2 Retrieving Junos configuration data
 text
 
 ```
-cli
+data = dev1.rpc.get_config()
+print(etree.tostring(data, encoding='unicode'))
 ```
 ## 2. subtitle
 text

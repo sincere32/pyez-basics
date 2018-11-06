@@ -4,9 +4,9 @@
 
 ## Documentation Structure
 
-[**1. Quick PyEZ Demo using the Python Interpreter**](README.md#1.-Quick-PyEZ-Demo-using-the-Python-Interpreter)
+![**1. Quick PyEZ Demo using the Python Interpreter**](README.md#1.-Quick-PyEZ-Demo-using-the-Python-Interpreter)
 
-[**2. Handling Junos Configurations with PyEZ**](README.md#2.-Handling-Junos-Configurations-with-PyEZ)
+![**2. Handling Junos Configurations with PyEZ**](README.md#2.-Handling-Junos-Configurations-with-PyEZ)
 
 
 # 1. Quick PyEZ Demo using the Python Interpreter
@@ -33,12 +33,12 @@ python
 
 ## 1.3 Getting the PyEZ module
 Import the "Device" class from the PyEZ module (jnpr.junps)
-```
+```python
 from jnpr.junos import Device
 ```
 
 Check out the documentation for the Device class
-```
+```python
 help(Device)
 ```
 
@@ -49,7 +49,7 @@ Create an instance of Device with the following variables:
 - passwd = password (can be empty when using SSH key)
 - port = 830 (by default but can be changed if needed)
 
-```
+```python
 dev1 = Device(host='mx1',user='lab', passwd='lab123')
 dev2 = Device(host='mx2',user='lab', passwd='lab123')
 dev1.open()
@@ -57,7 +57,7 @@ dev2.open()
 ```
 
 It's always a good idea to catch exceptions like this:
-```
+```python
 import sys
 from jnpr.junos.exception import ConnectError
 
@@ -71,47 +71,47 @@ except ConnectError as err:
 ## 1.5 Gather facts from devices
 
 Print all facts from the Devices instance objects
-```
+```python
 print(dev1.facts)
 print(dev2.facts)
 ```
 
 Print only some specific facts
-```
+```python
 print(dev1.facts['hostname'])
 print(dev1.facts['model'])
 print(dev1.facts['version'])
 ```
 
 Use Pretty Print instead
-```
+```python
 from pprint import pprint
 pprint(dev1.facts)
 pprint(dev2.facts)
 ```
 
 Display facts in JSON format
-```
+```python
 import json
 print (json.dumps(dev1.facts))
 ```
 
 Display facts in YAML format
-```
+```python
 import yaml
 print (yaml.dump(dev1.facts))
 ```
 
 ## 1.6 Close the PyEZ/NETCONF connection
 Close the connection to the device.
-```
+```python
 dev.close()
 ```
 
 ## 1.7 Complete PyEZ Script
 Create a script called 'get_facts.py'
 
-```
+```python
 from jnpr.junos import Device
 from jnpr.junos.exception import ConnectError
 import pprint
@@ -162,7 +162,7 @@ Now exploring how to retrieve and modify the configuration of some Junos devices
 ## 2.1 Baseline script
 Let's start with a simple script to open a NETCONF session to a single Junos device
 
-```
+```python
 from jnpr.junos import Device
 from jnpr.junos.exception import ConnectError
 import pprint
@@ -186,7 +186,7 @@ dev1.close()
 
 ## 2.2 Retrieving Junos configuration data
 Retrieve the full config in XML format
-```
+```python
 from lxml import etree
 
 data = dev1.rpc.get_config()
@@ -194,7 +194,7 @@ print(etree.tostring(data, encoding='unicode'))
 ```
 
 In Text format (classic curly braces style)
-```
+```python
 data = dev1.rpc.get_config(options={'format':'text'})
 print(etree.tostring(data))
 ```
@@ -205,26 +205,20 @@ print (etree.tostring(data))
 
 
 In JSON format
-```
+```python
 data = dev1.rpc.get_config(options={'format':'json'})
 pprint (data)
 ```
 
 Retrieving only specific parts of the configuration. This is achieved with the 'filter_xml' argument with the correct XML XPath. Here we look at the XPath: 'system/services'
-```
+```python
 data = dev1.rpc.get_config(filter_xml='<system><services/></system>', options={'format':'text'})
 print(etree.tostring(data))
 ```
 
-## 2.3 Loading a Junos configuration
-text
+## 2.3 Complete PyEZ Script
 
-```
-cli
-```
-## 2.4 Complete PyEZ Script
-
-```
+```python
 #!/usr/bin/env python
 
 from jnpr.junos import Device
@@ -265,10 +259,20 @@ pprint (data)
 data = dev1.rpc.get_config(filter_xml='<system><services/></system>', options={'format':'text'})
 print(etree.tostring(data))
 
-
 dev1.close()
-cli
 ```
+
+
+## 2.4 Loading a Junos configuration
+We 
+
+```
+from jnpr.junos.utils.config import Config
+
+
+```
+
+
 ## 2. subtitle
 text
 

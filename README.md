@@ -4,9 +4,9 @@
 
 ## Documentation Structure
 
-![**1. Quick PyEZ Demo using the Python Interpreter**](README.md#1.-Quick-PyEZ-Demo-using-the-Python-Interpreter)
+[**1. Quick PyEZ Demo using the Python Interpreter**](README.md#1.-Quick-PyEZ-Demo-using-the-Python-Interpreter)
 
-![**2. Handling Junos Configurations with PyEZ**](README.md#2.-Handling-Junos-Configurations-with-PyEZ)
+[**2. Handling Junos Configurations with PyEZ**](README.md#2.-Handling-Junos-Configurations-with-PyEZ)
 
 
 # 1. Quick PyEZ Demo using the Python Interpreter

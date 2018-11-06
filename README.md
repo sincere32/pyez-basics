@@ -13,8 +13,11 @@
 This is just a short demo to quickly show how the Python PyEZ library can help us 
 
 More on PyEZ here:
+
 https://junos-pyez.readthedocs.io/en/stable/
+
 https://www.juniper.net/documentation/en_US/junos-pyez/information-products/pathway-pages/junos-pyez-developer-guide.html
+
 
 ---
 ## 1.1 Start a Docker container for the PyEZ environment

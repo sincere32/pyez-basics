@@ -3,7 +3,6 @@
 from jnpr.junos import Device
 from jnpr.junos.utils.config import Config
 
-
 dev = Device(host='mx1',user='lab', passwd='lab123')
 
 try:

@@ -24,7 +24,7 @@ Using a Docker container greatly simplifies the environment setup for Python, Py
 ```
 docker run -it --rm -v $(pwd):/project --name pyez-ansible juniper/pyez-ansible ash
 ```
-See Docker Hub for more info
+See Docker Hub for more info: 
 https://hub.docker.com/r/juniper/pyez-ansible/
 
 ## 1.2 Start the Python interpreter

@@ -214,8 +214,9 @@ Retrieving only specific parts of the configuration. This is achieved with the '
 ```
 data = dev1.rpc.get_config(filter_xml='<system><services/></system>', options={'format':'text'})
 print(etree.tostring(data))
+```
 
-## 2. subtitle
+## 2.3 Loading a Junos configuration
 text
 
 ```

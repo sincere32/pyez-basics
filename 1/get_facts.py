@@ -12,7 +12,7 @@ try:
     dev1.open()
     dev2.open()
 except ConnectError as err:
-    print ("Cannot connect to device: {0}".format(err))
+    print("Cannot connect to device: {0}".format(err))
     sys.exit(1)
 
 print(dev1.facts['hostname'])

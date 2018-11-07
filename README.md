@@ -22,7 +22,9 @@ More on PyEZ here:
 Using a Docker container greatly simplifies the environment setup for Python, PyEz and Ansible... It also keeps things clean and contained
 
 ```
-docker run -it --rm -v $(pwd):/project --name pyez-ansible juniper/pyez-ansible ash
+docker pull juniper/pyez
+
+docker run -it --rm -v $(pwd):/project juniper/pyez
 ```
 See Docker Hub for more info: 
 https://hub.docker.com/r/juniper/pyez-ansible/

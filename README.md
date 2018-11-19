@@ -267,13 +267,15 @@ dev1.close()
 
 
 ## 2.4 Loading a Junos configuration
-We 
+Loading (merge) and committing some Junos config in text format (curly braces style)
 
 ```
 from jnpr.junos.utils.config import Config
 
 
 ```
+
+... TBC
 
 
 ## 2. subtitle

@@ -142,18 +142,18 @@ dev1.close()
 dev2.close()
 ```
 
-Setting file permissions
-```
-chmod +x get_facts.py
-```
 
 Running the Python script
 ```
-./get_facts.py
+python get_facts.py
 ```
 or
+
+Setting file permissions & Running the Python script
 ```
-python get_facts.py
+chmod +x get_facts.py
+
+./get_facts.py
 ```
 
 
@@ -276,66 +276,6 @@ from jnpr.junos.utils.config import Config
 ```
 
 
-## 2. subtitle
-text
-
-```
-cli
-```
-## 2. subtitle
-text
-
-```
-cli
-```
-## 2. subtitle
-text
-
-```
-cli
-```
-## 2. subtitle
-text
-
-```
-cli
-```
-## 2. subtitle
-text
-
-```
-cli
-```
-## 2. subtitle
-text
-
-```
-cli
-```
-## 2. subtitle
-text
-
-```
-cli
-```
-## 2. subtitle
-text
-
-```
-cli
-```
-## 2. subtitle
-text
-
-```
-cli
-```
-## 2. subtitle
-text
-
-```
-cli
-```
 ## 2. subtitle
 text
 

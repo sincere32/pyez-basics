@@ -149,7 +149,7 @@ python get_facts.py
 ```
 or
 
-Setting file permissions & Running the Python script
+Setting file permissions before running the Python script
 ```
 chmod +x get_facts.py
 

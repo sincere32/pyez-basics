@@ -30,7 +30,7 @@ See Docker Hub for more info:
 https://hub.docker.com/r/juniper/pyez-ansible/
 
 ## 1.2 Start the Python interpreter
-```
+```python
 python
 ```
 
